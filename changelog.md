@@ -1,3 +1,18 @@
+# Change Log
+
+## MVP features
+- api returns the price of the flights from different providers
+    - used Haversine formula to calculate the distance between two points
+    - modified the code which fetched airport data into async functions
+    - embeded the function to calculate fare into the controller
+    - fare is calculated based on the distance between the two airports
+    - now using icao code to fetch the airport data, instead of city name
+    - constant variables are now in the directory called constants, classified by string and numbers
+    
+    >@todo::
+    error handling in the controller
+    fixing the formatNumberWithCommas function
+
 ## Repository Genesis
 - auth controller for frontend added [wip]
 - controller method for flight fare added [wip]
