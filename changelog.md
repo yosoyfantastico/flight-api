@@ -1,5 +1,11 @@
 # Change Log
 
+## Improvements MVP features
+- added error handling, when the icao code is not found, it will return an error message to the user
+- added route for the airport data, for reference
+- removed the formatNumberWithCommas, price can be formatted in the frontend if required
+
+- added airports.json and batchInsert.js [for development only]
 ## MVP features
 - api returns the price of the flights from different providers
     - used Haversine formula to calculate the distance between two points

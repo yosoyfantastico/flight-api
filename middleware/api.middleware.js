@@ -6,7 +6,8 @@ async function apiKeyMiddleware(req, res, next) {
   if (result.rowCount === 1) {
     next()
   } else {
-    throw new Error('Invalid API key')
+    return res.status(400).json({ error: 'Invalid API key' });
   }
 }
+
 module.exports = apiKeyMiddleware

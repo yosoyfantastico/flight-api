@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path');
 const app = express()
 const apiKeyMiddleware = require('./middleware/api.middleware')
 
@@ -7,9 +8,9 @@ require('dotenv').config()
 app.use(morgan('tiny'))
 
 app.use(apiKeyMiddleware)
+const utilsFolderPath = path.join(__dirname, 'utils');
 
-const authRoute = require('./routes/auth.route')
-app.use('/api/auth', authRoute)
+app.use('/airports', express.static(utilsFolderPath));
 
 const flightRoute = require('./routes/flight.route')
 app.use('/api/flights', flightRoute)
