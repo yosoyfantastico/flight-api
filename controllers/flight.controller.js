@@ -1,6 +1,4 @@
 const pool = require('../utils/dbConfig')
-const os = require('os');
-const hostname = os.hostname();
 const {
     EARTH_RADIUS,
     FARE_PER_KM_AIR_INDIA,
@@ -24,15 +22,16 @@ async function getFlightFare(req, res) {
         fareSpiceJet,
         fareVistara
     };
-
+    const allValid = Object.values(fares).every(value => typeof value !== 'undefined');
     // Round off the numbers to 2 decimal places
     const roundedFares = {};
-    for (const key in fares) {
-        const roundedValue = fares[key].toFixed(2);
-        roundedFares[key] = roundedValue;
+    if (allValid) {
+        for (const key in fares) {
+            const roundedValue = fares[key].toFixed(2);
+            roundedFares[key] = roundedValue;
+        }
+        return res.status(200).json({ INR: roundedFares })
     }
-
-    return res.status(200).json({ INR: roundedFares })
 }
 
 async function calculateFlightFare(origin, destination, res) {
@@ -66,12 +65,11 @@ async function calculateFlightFare(origin, destination, res) {
             fareVistara
         }
     } catch (error) {
-        console.log('Error in calculating flight fare:', error);
+        // console.log('Error in calculating flight fare:', error);
         return res.status(500).json({ error: error.message })
     }
 }
 
-// console.log('Current hostname:', hostname);
 async function fetchCoordinates(icao_code) {
     const query = `SELECT * FROM airport_data WHERE icao = '${icao_code}'`
     const result = await pool.query(query)
@@ -81,7 +79,7 @@ async function fetchCoordinates(icao_code) {
         const lon = result.rows[0].lon
         return { lat, lon }
     } else {
-        const error = `couldn\'t find the airport, make sure you are using the correct ICAO code, Please refer to ${hostname}/airports/airports.json`
+        const error = `couldn\'t find the airport, make sure you are using the correct ICAO code, Please refer to https://flight.thenewabacus.com/airports/airports.json`
         throw new Error(error);
     }
 }

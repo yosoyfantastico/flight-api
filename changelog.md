@@ -1,5 +1,6 @@
 # Change Log
 
+## error handling in controller
 ## middleware improvements
 - added exception for api url
 ## Improvements MVP features
