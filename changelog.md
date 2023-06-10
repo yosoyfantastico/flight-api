@@ -1,5 +1,7 @@
 # Change Log
 
+## middleware improvements
+- added exception for api url
 ## Improvements MVP features
 - added error handling, when the icao code is not found, it will return an error message to the user
 - added route for the airport data, for reference
