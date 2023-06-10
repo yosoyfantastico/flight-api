@@ -30,18 +30,19 @@ CREATE TABLE airport_data ( icao VARCHAR(4), iata VARCHAR(3), name VARCHAR(255),
 
 **********************************************************************************************************************
 
-# SAMPLE REQUEST
-### `https://flight.thenewabacus.com/api/flights/originICAO/destinationICAO`
-## API KEYS
-####  `abc123`, `def456`, `ghi789`, `jkl012`, `mno345`
 
-## sample web request(POWERSHELL)
+# SAMPLE REQUEST
+*if httpS doesn't work, please use HTTP*
+### `https://flight.thenewabacus.com/api/flights/originICAO/destinationICAO`
+
+## Sample http request(POWERSHELL)
 `Invoke-WebRequest -Uri 'https://flight.thenewabacus.com/api/flights/RPLL/KJFK' -Headers @{'api-key' = 'mno345'}`
 
-## sample web request(cURL)[linux]
+## Sample http request(cURL)[linux]
 `curl --location --request GET 'https://flight.thenewabacus.com/api/flights/RPLL/KJFK'--header 'api-key: mno345'`
 
-
+## API KEYS
+####  `abc123`, `def456`, `ghi789`, `jkl012`, `mno345`
 ### Response: JSON
 ```JSON
 {
