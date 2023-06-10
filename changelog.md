@@ -1,6 +1,11 @@
 # Change Log
 
+## minor improvements
+- readme updated, changes in server.js
+## added ssl 
+- ssl for flight.thenewabacus.com
 ## error handling in controller
+
 ## middleware improvements
 - added exception for api url
 ## Improvements MVP features

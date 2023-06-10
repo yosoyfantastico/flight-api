@@ -1,5 +1,6 @@
 node_modules
 .env
 run.sh
+.well-known/
 # utils/airports.json
 # utils/batchInsert.js

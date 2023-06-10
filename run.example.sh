@@ -1,8 +1,9 @@
 #!/bin/bash
-export port=80
-export user=your_username
-export host=localhost
-export database=your_database_name
-export password=your_password
+export port=5432
+export web_port=80
+export user=postgres
+export host=
+export database=flightapi
+export password=
 
 pm2 start server.js --name flightAPI
