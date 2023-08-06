@@ -20,7 +20,7 @@ app.use('/airports', express.static(utilsFolderPath));
 //   key: fs.readFileSync('/etc/letsencrypt/live/flight.thenewabacus.com/privkey.pem'),
 //   cert: fs.readFileSync('/etc/letsencrypt/live/flight.thenewabacus.com/cert.pem'),
 // };
-const server = https.createServer(options, app);
+// const server = https.createServer(options, app);
 
 const flightRoute = require('./routes/flight.route')
 app.use('/api/flights', flightRoute)
