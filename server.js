@@ -16,10 +16,10 @@ const utilsFolderPath = path.join(__dirname, 'utils');
 //app.use('/.well-known/acme-challenge', express.static('.well-known/acme-challenge'));
 app.use('/airports', express.static(utilsFolderPath));
 
-const options = {
-  key: fs.readFileSync('/etc/letsencrypt/live/flight.thenewabacus.com/privkey.pem'),
-  cert: fs.readFileSync('/etc/letsencrypt/live/flight.thenewabacus.com/cert.pem'),
-};
+// const options = {
+//   key: fs.readFileSync('/etc/letsencrypt/live/flight.thenewabacus.com/privkey.pem'),
+//   cert: fs.readFileSync('/etc/letsencrypt/live/flight.thenewabacus.com/cert.pem'),
+// };
 const server = https.createServer(options, app);
 
 const flightRoute = require('./routes/flight.route')
@@ -28,6 +28,6 @@ app.use('/api/flights', flightRoute)
 app.listen(process.env.web_port, () => {
     console.info('server running on web_port: ',process.env.web_port)
 })
-server.listen(443, () => {
-  console.log('Express server running over HTTPS');
-});
+// server.listen(443, () => {
+//   console.log('Express server running over HTTPS');
+// });
